@@ -1,0 +1,53 @@
+﻿@model IEnumerable<StudentConsulting.Models.ConsultRequestViewModel>
+@{
+    ViewData["Title"] = "Queue";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Queue</h1>
+<div class="row">
+    <div class="col-md-6">
+        @if (Model.Any())
+        {
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td>Student Name</td>
+                        <td>Consulting Type</td>
+                        <td>Required Time</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.QueueNumber</td>
+                            <td>@item.StudentName</td>
+                            <td>@item.ConsultType</td>
+                            <td>@item.RequiredTime</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>There is no consultings requests yet.</p>
+        }
+    </div>
+    <div class="col-md-4 col-md-offset-2">
+        <div>
+            <h3>Details</h3>
+            <br />
+            <p><strong>Name:</strong>  @ViewBag.Name</p>
+            <p><strong>Subject: </strong>  @ViewBag.Subject</p>
+            <p><strong>Duration:</strong>  @ViewBag.Duration m</p>
+            <p><strong>Date:</strong>  @ViewBag.Date</p>
+        </div>
+        <br />
+        <form asp-action="Index" method="get">
+            <input class="btn btn-primary" type="submit" value="Back"/>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<StudentConsulting.Models.Lecturer>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-md-6">
+    <h1>This is a student page</h1>
+    <p>Choose a lecturer</p>
+    <form asp-action="Choose">
+        <div class="form-group">
+            <select name="lecturerId" class="form-control" asp-items='new SelectList(Model, "Id", "LastName")'></select>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Submit" />
+    </form>
+</div>
+
+
+
+
